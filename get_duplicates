@@ -1,0 +1,7 @@
+#Query to find duplicates 
+
+select member_id
+      , count(member_id)- count(distinct member_id)
+from table
+group by 1
+order by 2 desc
