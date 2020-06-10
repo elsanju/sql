@@ -1,0 +1,8 @@
+############################ ROW_NUMBER() ############################ 
+
+# The Row_Numaber function is an important function when you do paging in SQL Server. The Row_Number function is used to 
+# provide consecutive numbering of the rows in the result by the order selected in the OVER clause for each partition 
+# specified # in the OVER clause. It will assign the value 1 for the first row and increase the number of the subsequent rows.
+
+SELECT *, ROW_NUMBER() OVER(ORDER BY EmpName) AS Row_Number  
+FROM Employee  
