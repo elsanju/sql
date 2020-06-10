@@ -1,0 +1,8 @@
+# Create a calendar table with 3 columns: day, tag last day of week, tag last day of month from 2013-2099
+
+SELECT CAST(DAY AS TIMESTAMP) as date
+      , CASE WHEN EXTRACT(DAYOFWEEK FROM day) = 1 THEN TRUE ELSE FALSE END as last_day_of_week
+      , EXTRACT(DAY FROM DATE_ADD(day, INTERVAL 1 DAY)) = 1 as last_day_of_month
+FROM UNNEST(
+    GENERATE_DATE_ARRAY(DATE('2013-01-01'), DATE('2099-01-01'), INTERVAL 1 DAY)
+) AS day
